@@ -16,7 +16,7 @@ Feature: Install Discovery for Discovery
     And I save element in position '0' in '$.status[?(@.role == "master")].ports[0]' in environment variable 'postgresMD5_Port'
     And I wait '5' seconds
 
-  @runOnEnv(DISC_VERSION=0.28.9||DISC_VERSION=0.29.0||DISC_VERSION=0.30.0||DISC_VERSION=0.31.0-SNAPSHOT)
+  @runOnEnv(DISC_VERSION=0.29.0||DISC_VERSION=0.30.0||DISC_VERSION=0.31.0-SNAPSHOT)
   Scenario: [Basic Installation Discovery][02] Obtain postgreSQL ip and port
     Given I send a 'GET' request to '/service/${POSTGRES_FRAMEWORK_ID_TLS:-postgrestls}/v1/service/status'
     Then the service response status must be '200'
