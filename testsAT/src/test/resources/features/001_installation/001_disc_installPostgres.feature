@@ -11,7 +11,7 @@ Feature: Install Postgres for Discovery
   @runOnEnv(DISC_VERSION=0.28.9)
   Scenario: [Basic Installation Postgres Dependencies][01] Check PostgresMD5
     Given I open a ssh connection to '${DCOS_CLI_HOST:-dcos-cli.demo.stratio.com}' with user '${CLI_USER:-root}' and password '${CLI_PASSWORD:-stratio}'
-    Then in less than '600' seconds, checking each '20' seconds, the command output 'dcos task | grep ${POSTGRES_FRAMEWORK_ID_DISC:-postgresdisc} | grep R | wc -l' contains '1'
+    Then in less than '600' seconds, checking each '20' seconds, the command output 'dcos task | grep ^${POSTGRES_FRAMEWORK_ID_DISC:-postgresdisc} | grep R | wc -l' contains '1'
     And in less than '600' seconds, checking each '20' seconds, the command output 'dcos marathon task list ${POSTGRES_FRAMEWORK_ID_DISC:-postgresdisc} | grep ${POSTGRES_FRAMEWORK_ID_DISC:-postgresdisc} | awk '{print $2}'' contains 'True'
     When I run 'dcos marathon task list ${POSTGRES_FRAMEWORK_ID_DISC:-postgresdisc} | grep ${POSTGRES_FRAMEWORK_ID_DISC:-postgresdisc} | awk '{print $5}'' in the ssh connection and save the value in environment variable 'postgresMD5_marathonId'
     Then in less than '600' seconds, checking each '20' seconds, the command output 'dcos marathon task show !{postgresMD5_marathonId} | grep TASK_RUNNING | wc -l' contains '1'
@@ -26,7 +26,7 @@ Feature: Install Postgres for Discovery
   @runOnEnv(DISC_VERSION=0.29.0||DISC_VERSION=0.30.0||DISC_VERSION=0.31.0-SNAPSHOT)
   Scenario: [Basic Installation Postgres Dependencies][01] Check PostgresTLS
     Given I open a ssh connection to '${DCOS_CLI_HOST:-dcos-cli.demo.stratio.com}' with user '${CLI_USER:-root}' and password '${CLI_PASSWORD:-stratio}'
-    Then in less than '600' seconds, checking each '20' seconds, the command output 'dcos task | grep ${POSTGRES_FRAMEWORK_ID_TLS:-postgrestls} | grep R | wc -l' contains '1'
+    Then in less than '600' seconds, checking each '20' seconds, the command output 'dcos task | grep ^${POSTGRES_FRAMEWORK_ID_TLS:-postgrestls} | grep R | wc -l' contains '1'
     And in less than '600' seconds, checking each '20' seconds, the command output 'dcos marathon task list ${POSTGRES_FRAMEWORK_ID_TLS:-postgrestls} | grep ${POSTGRES_FRAMEWORK_ID_TLS:-postgrestls} | awk '{print $2}'' contains 'True'
     When I run 'dcos marathon task list ${POSTGRES_FRAMEWORK_ID_TLS:-postgrestls} | grep ${POSTGRES_FRAMEWORK_ID_TLS:-postgrestls} | awk '{print $5}'' in the ssh connection and save the value in environment variable 'postgresTLS_marathonId'
     Then in less than '600' seconds, checking each '20' seconds, the command output 'dcos marathon task show !{postgresTLS_marathonId} | grep TASK_RUNNING | wc -l' contains '1'
