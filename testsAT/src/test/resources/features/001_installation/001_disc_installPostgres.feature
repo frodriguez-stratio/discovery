@@ -110,5 +110,5 @@ Feature: Install Postgres for Discovery
   Scenario: [Basic Installation Postgres Dependencies][04] Create data for Discovery on PostgresTLS
     Given I open a ssh connection to '!{pgIP}' with user '${CLI_USER:-root}' and password '${CLI_PASSWORD:-stratio}'
     And I outbound copy 'src/test/resources/schemas/createPGContent.sql' through a ssh connection to '/tmp'
-    When I run 'docker cp /tmp/createPGContent.sql !{postgresDocker}:/tmp/ ; docker exec -t !{postgresDocker} psql -p !{postgresxl_Port_datastore} -U "${DISCOVERY_TENANT_NAME:-crossdata-1}" -d ${DISCOVERY_DATA_DB:-pruebadiscovery} -f /tmp/createPGContent.sql | grep "INSERT 0 1" | wc -l' in the ssh connection
+    When I run 'docker cp /tmp/createPGContent.sql !{postgresDocker}:/tmp/ ; docker exec -t !{postgresDocker} psql -p !{pgPortCalico} -U "${DISCOVERY_TENANT_NAME:-crossdata-1}" -d ${DISCOVERY_DATA_DB:-pruebadiscovery} -f /tmp/createPGContent.sql | grep "INSERT 0 1" | wc -l' in the ssh connection
     Then the command output contains '254'
