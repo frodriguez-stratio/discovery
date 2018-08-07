@@ -66,6 +66,8 @@ Feature: Install Postgres for Discovery
     When I run 'docker ps -q | xargs -n 1 docker inspect --format '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}} {{ .Name }}' | sed 's/ \// /'| grep !{pgIPCalico} | awk '{print $2}'' in the ssh connection and save the value in environment variable 'postgresDocker'
     When I run 'docker exec -t !{postgresDocker} psql -p !{pgPortCalico} -U postgres -c "CREATE DATABASE ${DISCOVERY_DATASTORE_DB:-discovery}"' in the ssh connection
     Then the command output contains 'CREATE DATABASE'
+    When I run 'docker exec -t !{postgresDocker} psql -p !{pgPortCalico} -U postgres -c "CREATE DATABASE ${DISCOVERY_DATA_DB:-pruebadiscovery}"' in the ssh connection
+    Then the command output contains 'CREATE DATABASE'
     When I run 'docker exec -t !{postgresDocker} psql -p !{pgPortCalico} -U postgres -c "CREATE ROLE \"${DISCOVERY_TENANT_NAME:-crossdata-1}\" with password '${DISCOVERY_DATASTORE_PASSWORD:-stratio}' SUPERUSER CREATEDB CREATEROLE REPLICATION BYPASSRLS LOGIN"' in the ssh connection
     Then the command output contains 'CREATE ROLE'
 
@@ -89,10 +91,24 @@ Feature: Install Postgres for Discovery
     When I run 'docker ps -q | xargs -n 1 docker inspect --format '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}} {{ .Name }}' | sed 's/ \// /'| grep !{pgIPCalico} | awk '{print $2}'' in the ssh connection and save the value in environment variable 'postgresDocker'
     When I run 'docker exec -t !{postgresDocker} psql -p !{pgPortCalico} -U postgres -c "CREATE DATABASE ${DISCOVERY_DATASTORE_DB:-discovery}"' in the ssh connection
     Then the command output contains 'CREATE DATABASE'
+    When I run 'docker exec -t !{postgresDocker} psql -p !{pgPortCalico} -U postgres -c "CREATE DATABASE ${DISCOVERY_DATA_DB:-pruebadiscovery}"' in the ssh connection
+    Then the command output contains 'CREATE DATABASE'
     And I wait '30' seconds
-
+#
+# TODO: Copy file createPGContent.sql to execute \i <path> from psql
+#
   @runOnEnv(DISC_VERSION=0.28.9)
   Scenario: [Basic Installation Postgres Dependencies][03] Create database for Discovery on PostgresMD5
     Given I connect with JDBC to database '${POSTGRES_FRAMEWORK_DEFAULT_DB:-postgres}' on host '!{postgresMD5_IP}' and port '!{postgresMD5_Port}' with user '${POSTGRES_FRAMEWORK_USER:-postgres}' and password '${POSTGRES_FRAMEWORK_PASSWORD:-stratio}'
     When I execute query 'CREATE DATABASE ${DISCOVERY_DATASTORE_DB:-discovery};'
+    Then the command output contains 'CREATE DATABASE'
+    When I execute query 'CREATE DATABASE ${DISCOVERY_DATA_DB:-pruebadiscovery};'
+    Then the command output contains 'CREATE DATABASE'
     Then I close database connection
+
+  @runOnEnv(DISC_VERSION=0.29.0||DISC_VERSION=0.30.0||DISC_VERSION=0.31.0-SNAPSHOT)
+  Scenario: [Basic Installation Postgres Dependencies][04] Create data for Discovery on PostgresTLS
+    Given I open a ssh connection to '!{pgIP}' with user '${CLI_USER:-root}' and password '${CLI_PASSWORD:-stratio}'
+    And I outbound copy 'src/test/resources/schemas/createPGContent.sql' through a ssh connection to '/tmp'
+    When I run 'docker cp /tmp/createPGContent.sql !{postgresDocker}:/tmp/ ; docker exec -t !{postgresDocker} psql -p !{postgresxl_Port_datastore} -U "${DISCOVERY_TENANT_NAME:-crossdata-1}" -d ${DISCOVERY_DATA_DB:-pruebadiscovery} -f /tmp/createPGContent.sql | grep "INSERT 0 1" | wc -l' in the ssh connection
+    Then the command output contains '254'
