@@ -40,3 +40,49 @@ Feature: Connection on Postgres
     Then the service response status must be '200'
     And the service response must contain the text '"name":"${DISCOVERY_DATABASE_PG_CONNECTION_NAME:-discovery}",'
 
+  @ignore @manual
+  @web
+  @runOnEnv(DISC_VERSION=0.29.0||DISC_VERSION=0.30.0||DISC_VERSION=0.31.0-SNAPSHOT)
+  Scenario: [Connection Postgres][03] Get postgres database id
+    Given My app is running in '${DISCOVERY_SERVICE_VHOST:-nightlypublic.labs.stratio.com}:443'
+    When I securely browse to '${DISCOVERY_DISCOVERY_PATH:-/discovery}'
+    And I wait '3' seconds
+    And '1' elements exists with 'xpath://input[@name="username"]'
+    And I type '${USER:-demo@stratio.com}' on the element on index '0'
+    And '1' elements exists with 'xpath://input[@name="password"]'
+    And I type '${PASSWORD:-123456}' on the element on index '0'
+    And '1' elements exists with 'xpath://*[@id="root"]/div/div/div/div[2]/form/div[4]/button'
+    And I click on the element on index '0'
+    And I wait '4' seconds
+    Then I save selenium cookies in context
+    And I wait '2' seconds
+    When I securely send requests to '${DISCOVERY_SERVICE_VHOST:-nightlypublic.labs.stratio.com}:443'
+    Then in less than '300' seconds, checking each '10' seconds, I send a 'GET' request to '${DISCOVERY_DISCOVERY_PATH:-/discovery}${DISCOVERY_DATABASES:-/api/database}' so that the response contains '"engine":"postgres"'
+    Then the service response status must be '200'
+    And I save element '$' in environment variable 'exhibitor_answer'
+    And I save ''!{exhibitor_answer}'' in variable 'parsed_answer'
+    And I run 'echo !{parsed_answer} | jq '.[] | select(.engine=="postgres") | .id'' locally and save the value in environment variable 'pgdatabaseId'
+
+  @ignore @manual
+  @web
+  @runOnEnv(DISC_VERSION=0.29.0||DISC_VERSION=0.30.0||DISC_VERSION=0.31.0-SNAPSHOT)
+  Scenario: [Connection Postgres][04] Check query postgres database
+    Given My app is running in '${DISCOVERY_SERVICE_VHOST:-nightlypublic.labs.stratio.com}:443'
+    When I securely browse to '${DISCOVERY_DISCOVERY_PATH:-/discovery}'
+    And I wait '3' seconds
+    And '1' elements exists with 'xpath://input[@name="username"]'
+    And I type '${USER:-demo@stratio.com}' on the element on index '0'
+    And '1' elements exists with 'xpath://input[@name="password"]'
+    And I type '${PASSWORD:-123456}' on the element on index '0'
+    And '1' elements exists with 'xpath://*[@id="root"]/div/div/div/div[2]/form/div[4]/button'
+    And I click on the element on index '0'
+    And I wait '4' seconds
+    Then I save selenium cookies in context
+    And I wait '2' seconds
+    When I securely send requests to '${DISCOVERY_SERVICE_VHOST:-nightlypublic.labs.stratio.com}:443'
+    Then I send a 'POST' request to '${DISCOVERY_DISCOVERY_PATH:-/discovery}${DISCOVERY_DATASET:-/api/dataset}' based on 'schemas/dataset.json' as 'json' with:
+      | $.database                 | REPLACE | !{pgdatabaseId}                         | number |
+      | $.type                     | UPDATE  | ${DISCOVERY_TYPE_DATASET:-query}        | string |
+      | $.query.source_table       | REPLACE | !{pgdatabaseId}                         | number |
+    Then the service response status must be '200'
+    And the service response must contain the text '"row_count":254,'
