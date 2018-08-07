@@ -93,7 +93,7 @@ Feature: Install Postgres for Discovery
     Then the command output contains 'CREATE DATABASE'
     When I run 'docker exec -t !{postgresDocker} psql -p !{pgPortCalico} -U postgres -c "CREATE DATABASE ${DISCOVERY_DATA_DB:-pruebadiscovery}"' in the ssh connection
     Then the command output contains 'CREATE DATABASE'
-    And I wait '30' seconds
+    And I wait '60' seconds
 #
 # TODO: Copy file createPGContent.sql to execute \i <path> from psql
 #
