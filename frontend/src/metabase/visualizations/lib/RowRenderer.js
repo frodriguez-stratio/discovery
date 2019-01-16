@@ -152,6 +152,11 @@ export default function rowRenderer(
   let cap = Math.max(1, Math.floor(containerHeight / rowHeight));
   chart.cap(cap);
 
+  // If we select interpolated series
+  if(settings["line.interpolate_series"]) {
+    console.log("line interpolate_series into RowRenderer");
+  }
+
   chart.render();
 
   // check if labels overflow after rendering correct number of rows

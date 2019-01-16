@@ -297,6 +297,7 @@ function getYAxisProps(props, groups, datas) {
     yRightSplit,
     isSplit: getIsSplitYAxis(yLeftSplit, yRightSplit),
   };
+  // return { yLeftSplit.series[0].data.rows } is the first serie
 }
 
 /// make the `onBrushChange()` and `onBrushEnd()` functions we'll use later, as well as an `isBrushing()` function to check
@@ -338,13 +339,14 @@ function makeBrushChangeFunctions({ series, onChangeCardAndRun }) {
 function getDcjsChart(cardType, parent) {
   switch (cardType) {
     case "line":
-      return lineAddons(dc.lineChart(parent));
+    return lineAddons(dc.lineChart(parent));
     case "area":
-      return lineAddons(dc.lineChart(parent));
-    case "bar":
+    return lineAddons(dc.lineChart(parent))
+   
+    /* case "bar":
       return dc.barChart(parent);
     case "scatter":
-      return dc.bubbleChart(parent);
+      return dc.bubbleChart(parent); */
     default:
       return dc.barChart(parent);
   }
@@ -352,11 +354,13 @@ function getDcjsChart(cardType, parent) {
 
 function applyChartLineBarSettings(chart, settings, chartType) {
   // LINE/AREA:
-  // for chart types that have an 'interpolate' option (line/area charts), enable based on settings
+  // for chart types that have an 'interpolate' or 'interpolate_series' option (line/area charts), enable based on settings
   if (chart.interpolate) {
     chart.interpolate(settings["line.interpolate"] || DEFAULT_INTERPOLATION);
   }
-
+  if (chart.interpolate_series) {
+    chart.interpolate_series(settings["line.interpolate_series"]);
+  }
   // AREA:
   if (chart.renderArea) {
     chart.renderArea(chartType === "area");
@@ -409,9 +413,33 @@ function setChartColor({ settings, chartType }, chart, groups, index) {
     } else {
       chart.colors(colors[index % colors.length]);
     }
-  } else {
-    chart.ordinalColors(colors);
+  } else { 
+      chart.ordinalColors(colors); 
   }
+  if(group) {
+    if (chartType === "line" || chartType === "area") {
+      chart.colors( ['red', 'blue', 'green', 'black' ] )
+      .colorDomain([0,3])
+      .group(group)
+      .colorAccessor(function(d, i){
+        console.log(i)
+        if(i < 25) {
+          console.log("red")
+          return 0;
+        }
+        else if(75 > i && i > 25) {
+          console.log("blue")
+
+          return 1;
+        }
+        else {
+          console.log("green")
+         return 2;
+        }
+      });
+    }
+  }
+
 }
 
 /// Return a sequence of little charts for each of the groups.
@@ -453,6 +481,9 @@ function getCharts(
       );
     }
 
+    if(chartType === "line") {
+
+    }
     setChartColor(props, chart, groups, index);
 
     for (let i = 1; i < group.length; i++) {
@@ -520,6 +551,7 @@ function applyXAxisSettings(parent, series, xAxisProps) {
   } else {
     applyChartOrdinalXAxis(parent, series, xAxisProps);
   }
+
 }
 
 function applyYAxisSettings(parent, { yLeftSplit, yRightSplit }) {
@@ -529,6 +561,7 @@ function applyYAxisSettings(parent, { yLeftSplit, yRightSplit }) {
   if (yRightSplit && yRightSplit.series.length > 0) {
     applyChartYAxis(parent, yRightSplit.series, yRightSplit.extent, "right");
   }
+  
 }
 
 // TODO - better name
@@ -689,6 +722,7 @@ export default function lineAreaBar(
     isStacked(parent.settings, datas),
   );
 
+  // HERE we can change
   // only ordinal axis can display "null" values
   if (isOrdinal(parent.settings)) {
     delete warnings[NULL_DIMENSION_WARNING];

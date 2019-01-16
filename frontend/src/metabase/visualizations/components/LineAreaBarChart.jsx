@@ -105,6 +105,7 @@ export default class LineAreaBarChart extends Component {
     }
   }
 
+
   static seriesAreCompatible(initialSeries, newSeries) {
     let initialSettings = getSettings([initialSeries]);
     let newSettings = getSettings([newSeries]);
@@ -213,7 +214,10 @@ export default class LineAreaBarChart extends Component {
     if (fidelity.x === 0 && fidelity.y === 0) {
       settings["line.interpolate"] = "cardinal";
     }
-
+    // smooth interpolation series at smallest x/y fidelity
+    if (fidelity.x === 0 && fidelity.y === 0) {
+      settings["line.interpolate_series"] = "cardinal";
+    }
     // no axis in < 1 fidelity
     if (fidelity.x < 1 || fidelity.y < 1) {
       settings["graph.y_axis.axis_enabled"] = false;

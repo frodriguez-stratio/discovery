@@ -14,6 +14,39 @@ import {
 // max number of points to "fill"
 // TODO: base on pixel width of chart?
 const MAX_FILL_COUNT = 10000;
+function fillMatchValues(datas) {
+  /* , xValues, matchValue, getKey = v => v
+  try {
+    return datas.map(rows => {
+      const matchNewValues = rows[0].map(d => matchValue);
+      let map = new Map();
+      for (const row of rows) {
+        if (row[1] !== null) {
+          map.set(getKey(row[0]), row);
+        } else {
+          // console.log('map: before delete', map);
+          map.delete(getKey(row));
+          // console.log('map: after delete', map);
+        }
+      }
+      let newRows = xValues.map(value => {
+        const key = getKey(value);
+        const row = map.get(key);
+        if (row) {
+          map.concat(key);
+          return [value, ...row];
+        } else {
+          return [value, ...row, matchNewValues];
+        }
+      });
+      return newRows;
+    });
+  } catch (e) {
+    console.warn(e);
+    return datas;
+  } */
+  return datas;
+}
 
 function fillMissingValues(datas, xValues, fillValue, getKey = v => v) {
   try {
@@ -56,6 +89,7 @@ export default function fillMissingValuesInDatas(
     settings["line.missing"] === "none"
   ) {
     const fillValue = settings["line.missing"] === "zero" ? 0 : null;
+ 
     if (isTimeseries(settings)) {
       // $FlowFixMe
       const { interval, count } = xInterval;
@@ -86,6 +120,7 @@ export default function fillMissingValuesInDatas(
           // $FlowFixMe
           end += xInterval * 0.5;
         }
+        // Here we have to start the changes
         xValues = d3.range(start, end, xInterval);
         datas = fillMissingValues(
           datas,
@@ -99,5 +134,30 @@ export default function fillMissingValuesInDatas(
       datas = fillMissingValues(datas, xValues, fillValue);
     }
   }
+
+  // interpolate_series
+  if (settings["line.missing"] === "interpolate_series") {
+    const matchValue = settings["line.missing"] === "interpolate_series" ? 0 : null;
+    if (isTimeseries(settings)) {
+      // $FlowFixMe
+      const { interval, count } = xInterval;
+      if (count <= MAX_FILL_COUNT) {
+        // replace xValues with
+        xValues = d3.time[interval]
+          .range(xDomain[0], moment(xDomain[1]).add(1, "ms"), count)
+          .map(d => moment(d));
+          /* ,
+          xValues,
+          matchValue,
+          m => d3.round(m.toDate().getTime(), -1 */
+        datas = fillMatchValues(
+          datas
+        );
+      }
+    } else {
+      datas = fillMatchValues(datas);
+    }
+  }
+
   return datas;
 }

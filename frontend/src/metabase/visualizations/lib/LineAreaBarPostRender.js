@@ -425,6 +425,14 @@ function computeXAxisSpacing(chart) {
   return minXAxisSpacing;
 }
 
+function beforeRenderXAxisSeries(chart) {
+  // treat chart interpolate_series
+  if (chart.settings["line.missing"] === "interpolate_series") {
+    console.log('adjustYAxisTicksIfNeeded');
+    
+  }
+}
+
 function beforeRenderComputeXAxisLabelType(chart) {
   // treat graph.x_axis.axis_enabled === true as "auto"
   if (chart.settings["graph.x_axis.axis_enabled"] === true) {
@@ -506,6 +514,7 @@ function beforeRenderFixMargins(chart) {
 
 // collection of function calls that get made *before* we tell the Chart to render
 function beforeRender(chart) {
+  beforeRenderXAxisSeries(chart);
   beforeRenderComputeXAxisLabelType(chart);
   beforeRenderHideDisabledAxesAndLabels(chart);
   beforeRenderFixMargins(chart);
@@ -522,6 +531,7 @@ export default function lineAndBarOnRender(
   isSplitAxis,
   isStacked,
 ) {
+  console.log(chart)
   beforeRender(chart);
   chart.on("renderlet.on-render", () =>
     onRender(chart, onGoalHover, isSplitAxis, isStacked),

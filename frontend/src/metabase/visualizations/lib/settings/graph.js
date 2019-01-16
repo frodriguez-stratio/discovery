@@ -165,6 +165,19 @@ export const LINE_SETTINGS = {
     },
     getDefault: () => "linear",
   },
+  "line.interpolate_series": {
+    section: t`Display`,
+    title: t`Style`,
+    widget: "select",
+    props: {
+      options: [
+        { name: t`Line`, value: "linear" },
+        { name: t`Curve`, value: "cardinal" },
+        { name: t`Step`, value: "step-after" },
+      ],
+    },
+    getDefault: () => "linear",
+  },
   "line.marker_enabled": {
     section: t`Display`,
     title: t`Show point markers on lines`,
@@ -223,6 +236,7 @@ export const LINE_SETTINGS_2 = {
         { name: t`Zero`, value: "zero" },
         { name: t`Nothing`, value: "none" },
         { name: t`Linear Interpolated`, value: "interpolate" },
+        { name: t`Linear Interpolated Series`, value: "interpolate_series" },
       ],
     }),
   },

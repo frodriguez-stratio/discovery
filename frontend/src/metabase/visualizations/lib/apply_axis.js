@@ -161,6 +161,11 @@ export function applyChartTimeseriesXAxis(
     chart.xAxis().ticks(0);
   }
 
+  // Interpolated series
+  if (chart.settings["line.missing"] === "interpolate_series") {
+      console.log('SingleSeries on Interpolated series:', firstSeries);
+  }
+
   // pad the domain slightly to prevent clipping
   xDomain[0] = moment(xDomain[0]).subtract(
     dataInterval.count * 0.75,
@@ -180,6 +185,8 @@ export function applyChartTimeseriesXAxis(
       1 + moment(stop).diff(start, dataInterval.interval) / dataInterval.count,
     ),
   );
+
+  // 
 }
 
 export function applyChartQuantitativeXAxis(
@@ -300,7 +307,8 @@ export function applyChartOrdinalXAxis(
   chart.x(d3.scale.ordinal().domain(xValues)).xUnits(dc.units.ordinal);
 }
 
-export function applyChartYAxis(chart, series, yExtent, axisName) {
+export function applyChartYAxis(
+  chart, series, yExtent, axisName) {
   let axis;
   if (axisName !== "right") {
     axis = {
@@ -340,6 +348,7 @@ export function applyChartYAxis(chart, series, yExtent, axisName) {
     }
     chart.renderHorizontalGridLines(true);
     adjustYAxisTicksIfNeeded(axis.axis(), chart.height());
+    // This is the interpolated 
   } else {
     axis.axis().ticks(0);
   }
@@ -382,5 +391,16 @@ export function applyChartYAxis(chart, series, yExtent, axisName) {
       throw "Y-axis must not cross 0 when using log scale.";
     }
     axis.scale(scale.domain([axis.setting("min"), axis.setting("max")]));
+  }
+
+  // Interpolated series
+  if (chart.settings["line.missing"] === "interpolate_series") {
+    // find the first nonempty single series
+    // $FlowFixMe
+    const firstSeries: SingleSeries = _.find(
+      series,
+      s => !datasetContainsNoResults(s.data),
+    );
+      // console.log('SingleSeries:', firstSeries);
   }
 }
