@@ -137,7 +137,7 @@ export default function fillMissingValuesInDatas(
 
   // interpolate_series
   if (settings["line.missing"] === "interpolate_series") {
-    const matchValue = settings["line.missing"] === "interpolate_series" ? 0 : null;
+    // const matchValue = settings["line.missing"] === "interpolate_series" ? 0 : null;
     if (isTimeseries(settings)) {
       // $FlowFixMe
       const { interval, count } = xInterval;

@@ -1,7 +1,7 @@
 /* @flow weak */
 
 import d3 from "d3";
-
+import dc from "dc";
 import colors from "metabase/lib/colors";
 import { clipPathReference } from "metabase/lib/dom";
 import { adjustYAxisTicksIfNeeded } from "./apply_axis";
@@ -429,8 +429,34 @@ function beforeRenderXAxisSeries(chart) {
   // treat chart interpolate_series
   if (chart.settings["line.missing"] === "interpolate_series") {
     console.log('adjustYAxisTicksIfNeeded');
-    
-  }
+    // elem.style.color = elem.getAttribute("fill");
+    /* for (let elem of chart.selectAll(".sub, .chart-body")[0]) {
+
+    } */
+   /*  let svg = chart.chartBodyG().select("#dc-chart");
+      let y = function(){};
+      svg
+      .append("svg")
+      .append("g")
+      svg  
+      .append("linearGradient")				
+      .attr("id", "line-gradient")			
+      .attr("gradientUnits", "userSpaceOnUse")
+      .attr("x1", 0).attr("y1", y(0))	
+      .attr("x2", "100%").attr("y2", y(0))
+      .selectAll("stop")						
+      .data([								
+        {offset: "0%", color: "red"},		
+        {offset: "40%", color: "red"},	
+        {offset: "40%", color: "black"},		
+        {offset: "62%", color: "black"},		
+        {offset: "62%", color: "lawngreen"},	
+        {offset: "100%", color: "lawngreen"}	
+      ])					
+      .enter().append("stop")			
+      .attr("offset", function(d) { return d.offset; })	
+      .attr("stop-color", function(d) { return d.color; });*/
+    } 
 }
 
 function beforeRenderComputeXAxisLabelType(chart) {

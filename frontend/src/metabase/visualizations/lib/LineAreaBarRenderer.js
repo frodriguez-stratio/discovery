@@ -235,7 +235,7 @@ function getDimensionsAndGroupsForOther({ series }, datas, warn) {
 function getDimensionsAndGroupsAndUpdateSeriesDisplayNames(props, datas, warn) {
   const { settings, chartType } = props;
 
-  return chartType === "scatter"
+  return chartType === ("scatter" || "area" || "line")
     ? getDimensionsAndGroupsForScatterChart(datas)
     : isStacked(settings, datas)
       ? getDimensionsAndGroupsAndUpdateSeriesDisplayNamesForStackedChart(
@@ -416,30 +416,9 @@ function setChartColor({ settings, chartType }, chart, groups, index) {
   } else { 
       chart.ordinalColors(colors); 
   }
-  if(group) {
-    if (chartType === "line" || chartType === "area") {
-      chart.colors( ['red', 'blue', 'green', 'black' ] )
-      .colorDomain([0,3])
-      .group(group)
-      .colorAccessor(function(d, i){
-        console.log(i)
-        if(i < 25) {
-          console.log("red")
-          return 0;
-        }
-        else if(75 > i && i > 25) {
-          console.log("blue")
-
-          return 1;
-        }
-        else {
-          console.log("green")
-         return 2;
-        }
-      });
-    }
+  if (chartType === "line" || chartType === "area") {
+    colorShades(colors[index % colors.length], group.length)
   }
-
 }
 
 /// Return a sequence of little charts for each of the groups.
@@ -481,9 +460,11 @@ function getCharts(
       );
     }
 
-    if(chartType === "line") {
-
-    }
+    /* if(chart.defined) {
+      chart.defined(
+        settings["line.missing"] === "intepolate_series" ? d => d.y != null : d => true,
+      );
+    } */
     setChartColor(props, chart, groups, index);
 
     for (let i = 1; i < group.length; i++) {
