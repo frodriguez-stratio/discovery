@@ -43,13 +43,16 @@ export const lineAddons = _chart => {
       {offset: "62%", color: "lawngreen"},	
       {offset: "100%", color: "lawngreen"}	
     ])					
-    .enter().append("stop")			
+    .enter().append("stop")
       .attr("offset", function(d) { return d.offset; })	
-      .attr("stop-color", function(d) { return d.color; });    
-    // Add the valueline path.
-    chart.append("path")
-        .attr("class", "line")
-        //.attr("d", valueline);
+      .attr("stop-color", function(d) { return d.color; });
+    _chart.chartBodyG()
+          .selectAll(".dc-chart path.line")
+          .attr("stroke", "url(#line-gradient)");
+    _chart.chartBodyG()          
+          .selectAll(".dc-chart path.area")
+          .attr("fill", "url(#line-gradient)");
+
 
     if (_chart.isOrdinal()) {
       if (_chart.hasFilter()) {
