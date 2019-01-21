@@ -83,6 +83,7 @@ const enableBrush = (series, onChangeCardAndRun) =>
 /************************************************************ SETUP ************************************************************/
 
 function checkSeriesIsValid({ series, maxSeries }) {
+
   if (getFirstNonEmptySeries(series).data.cols.length < 2) {
     throw new Error(t`This chart type requires at least 2 columns.`);
   }
@@ -94,6 +95,7 @@ function checkSeriesIsValid({ series, maxSeries }) {
   }
 }
 
+// With configuration of Visualizations
 function getDatas({ settings, series }, warn) {
   return series.map(s =>
     s.data.rows.map(row => {
@@ -103,6 +105,7 @@ function getDatas({ settings, series }, warn) {
           ? HACK_parseTimestamp(row[0], s.data.cols[0].unit, warn)
           : isDimensionNumeric(series) ? row[0] : String(row[0]),
         ...row.slice(1),
+
       ];
       // $FlowFixMe: _origin not typed
       newRow._origin = row._origin;
@@ -119,6 +122,7 @@ function getXInterval({ settings, series }, xValues) {
   } else if (isQuantitative(settings) || isHistogram(settings)) {
     // Get the bin width from binning_info, if available
     // TODO: multiseries?
+
     const binningInfo = getFirstNonEmptySeries(series).data.cols[0]
       .binning_info;
     if (binningInfo) {
@@ -139,6 +143,10 @@ function getXAxisProps(props, datas) {
     xInterval: getXInterval(props, xValues),
     isHistogramBar: isHistogramBar(props),
   };
+}
+
+function lineAreaInterpolateSeries(props, {settings}) {
+  settings["stackable.stack_type"] = "stacked";
 }
 
 ///------------------------------------------------------------ DIMENSIONS & GROUPS ------------------------------------------------------------///
@@ -207,7 +215,7 @@ function getDimensionsAndGroupsAndUpdateSeriesDisplayNamesForStackedChart(
   return { dimension, groups };
 }
 
-function getDimensionsAndGroupsForOther({ series }, datas, warn) {
+function getDimensionsAndGroupsForOther({ series, settings }, datas, warn) {
   const dataset = crossfilter();
   datas.map(data => dataset.add(data));
 
@@ -261,6 +269,7 @@ function getYAxisSplit(
     chartType !== "scatter" &&
     !isStacked(settings, datas) &&
     hasDifferentYAxisColumns &&
+    /////////////////////
     settings["graph.y_axis.auto_split"] !== false
   ) {
     return computeSplit(yExtents);
@@ -302,7 +311,7 @@ function getYAxisProps(props, groups, datas) {
 
 /// make the `onBrushChange()` and `onBrushEnd()` functions we'll use later, as well as an `isBrushing()` function to check
 /// current status.
-function makeBrushChangeFunctions({ series, onChangeCardAndRun }) {
+function makeBrushChangeFunctions({ settings, series, onChangeCardAndRun }) {
   let _isBrushing = false;
 
   const isBrushing = () => _isBrushing;
@@ -327,7 +336,7 @@ function makeBrushChangeFunctions({ series, onChangeCardAndRun }) {
           nextCard: updateNumericFilter(card, column, start, end),
           previousCard: card,
         });
-      }
+      }     
     }
   }
 
@@ -341,7 +350,7 @@ function getDcjsChart(cardType, parent) {
     case "line":
     return lineAddons(dc.lineChart(parent));
     case "area":
-    return lineAddons(dc.lineChart(parent))
+    return lineAddons(dc.lineChart(parent));
    
     /* case "bar":
       return dc.barChart(parent);
@@ -358,6 +367,7 @@ function applyChartLineBarSettings(chart, settings, chartType) {
   if (chart.interpolate) {
     chart.interpolate(settings["line.interpolate"] || DEFAULT_INTERPOLATION);
   }
+  // 'interpolate_series' option (line/area charts), enable based on settings
   if (chart.interpolate_series) {
     chart.interpolate_series(settings["line.interpolate_series"]);
   }
@@ -365,7 +375,9 @@ function applyChartLineBarSettings(chart, settings, chartType) {
   if (chart.renderArea) {
     chart.renderArea(chartType === "area");
   }
-
+  if (chart.renderLine) {
+    chart.renderLine(chartType === "line");
+  }
   // BAR:
   if (chart.barPadding) {
     chart
@@ -398,14 +410,14 @@ function doScatterChartStuff(chart, datas, index, { yExtent, yExtents }) {
 
 /// set the colors for a CHART based on the number of series and type of chart
 /// see http://dc-js.github.io/dc.js/docs/html/dc.colorMixin.html
-function setChartColor({ settings, chartType }, chart, groups, index) {
+function setChartColor({ settings, chartType, series }, chart, groups, index) {
   const group = groups[index];
   const colors = settings["graph.colors"];
-
   // multiple series
   if (groups.length > 1 || chartType === "scatter") {
     // multiple stacks
     if (group.length > 1) {
+      
       // compute shades of the assigned color
       chart.ordinalColors(
         colorShades(colors[index % colors.length], group.length),
@@ -415,9 +427,6 @@ function setChartColor({ settings, chartType }, chart, groups, index) {
     }
   } else { 
       chart.ordinalColors(colors); 
-  }
-  if (chartType === "line" || chartType === "area") {
-    colorShades(colors[index % colors.length], group.length)
   }
 }
 
@@ -462,7 +471,7 @@ function getCharts(
 
     /* if(chart.defined) {
       chart.defined(
-        settings["line.missing"] === "intepolate_series" ? d => d.y != null : d => true,
+        settings["line.missing"] === "intepolate_series"
       );
     } */
     setChartColor(props, chart, groups, index);
@@ -625,7 +634,7 @@ export default function lineAreaBar(
   checkSeriesIsValid(props);
 
   // force histogram to be ordinal axis with zero-filled missing points
-  settings["graph.x_axis._scale_original"] = settings["graph.x_axis.scale"];
+  // settings["graph.x_axis._scale_original"] = settings["graph.x_axis.scale"];
   if (isHistogram(settings)) {
     settings["line.missing"] = "zero";
     settings["graph.x_axis.scale"] = "ordinal";
@@ -660,6 +669,7 @@ export default function lineAreaBar(
 
   const brushChangeFunctions = makeBrushChangeFunctions(props);
 
+
   const charts = getCharts(
     props,
     yAxisProps,
@@ -683,6 +693,15 @@ export default function lineAreaBar(
   } else if (isHistogramBar(props)) {
     doHistogramBarStuff(parent);
   }
+
+  /* if (charts && settings["line.interpolate_series"]) {
+    // Declaring const/let chart from D3
+
+    const dcChart = d3.select(".dc-chart");
+      dcChart
+      .attr("stroke",  "black");
+  } */
+
 
   // HACK: compositeChart + ordinal X axis shenanigans. See https://github.com/dc-js/dc.js/issues/678 and https://github.com/dc-js/dc.js/issues/662
   parent._rangeBandPadding(chartType === "bar" ? BAR_PADDING_RATIO : 1); //
@@ -714,6 +733,13 @@ export default function lineAreaBar(
       yAxisSplit: yAxisProps.yAxisSplit,
       warnings: Object.keys(warnings),
     });
+  }
+
+  // Interpolate series
+  if (settings["line.missing"] === "interpolate_series") {
+    lineAreaInterpolateSeries(props, {settings});
+  } else {
+    settings["stackable.stack_type"] = null;
   }
 
   // return an unregister function

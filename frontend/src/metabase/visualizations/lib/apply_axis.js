@@ -163,7 +163,7 @@ export function applyChartTimeseriesXAxis(
 
   // Interpolated series
   if (chart.settings["line.missing"] === "interpolate_series") {
-      console.log('SingleSeries on Interpolated series:', firstSeries);
+     // console.log('SingleSeries on Interpolated series:', firstSeries);
   }
 
   // pad the domain slightly to prevent clipping
@@ -397,10 +397,10 @@ export function applyChartYAxis(
   if (chart.settings["line.missing"] === "interpolate_series") {
     // find the first nonempty single series
     // $FlowFixMe
-    const firstSeries: SingleSeries = _.find(
+    /* const firstSeries: SingleSeries = _.find(
       series,
       s => !datasetContainsNoResults(s.data),
-    );
+    ); */
       // console.log('SingleSeries:', firstSeries);
   }
 }

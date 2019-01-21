@@ -214,9 +214,9 @@ export default class LineAreaBarChart extends Component {
     if (fidelity.x === 0 && fidelity.y === 0) {
       settings["line.interpolate"] = "cardinal";
     }
-    // smooth interpolation series at smallest x/y fidelity
-    if (fidelity.x === 0 && fidelity.y === 0) {
-      settings["line.interpolate_series"] = "cardinal";
+    // hide stacked interpolation series at smallest x/y fidelity
+    if (settings["line.interpolate_series"]) {
+      settings["stackable.stack_type"] = "stacked";
     }
     // no axis in < 1 fidelity
     if (fidelity.x < 1 || fidelity.y < 1) {

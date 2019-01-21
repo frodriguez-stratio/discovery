@@ -48,6 +48,7 @@ function fillMatchValues(datas) {
   return datas;
 }
 
+
 function fillMissingValues(datas, xValues, fillValue, getKey = v => v) {
   try {
     return datas.map(rows => {
@@ -87,6 +88,7 @@ export default function fillMissingValuesInDatas(
   if (
     settings["line.missing"] === "zero" ||
     settings["line.missing"] === "none"
+    || settings["line.missing"] === "interpolate_series"
   ) {
     const fillValue = settings["line.missing"] === "zero" ? 0 : null;
  

@@ -200,9 +200,11 @@ export const STACKABLE_SETTINGS = {
     getDefault: ([{ card, data }], vizSettings) =>
       // legacy setting and default for D-M-M+ charts
       vizSettings["stackable.stacked"] ||
-      (card.display === "area" && vizSettings["graph.metrics"].length > 1)
+      (card.display === "area" && vizSettings["graph.metrics"].length > 1) ||
+      (card.display === "line" && vizSettings["graph.metrics"].length > 1 &&
+                                  vizSettings["line.interpolate_series"])
         ? "stacked"
-        : null,
+        : null, 
     getHidden: series => series.length < 2,
     readDependencies: ["graph.metrics"],
   },
