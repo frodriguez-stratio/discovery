@@ -1,6 +1,6 @@
 # #-#-#-#-#  metabase-backend.pot (metabase)  #-#-#-#-#
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR Discovery <docs@metabase.com>
+# Copyright (C) YEAR Metabase <docs@metabase.com>
 # This file is distributed under the same license as the metabase package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
@@ -13,7 +13,7 @@ msgstr ""
 "#-#-#-#-#  metabase-backend.pot (metabase)  #-#-#-#-#\n"
 "Project-Id-Version: metabase\n"
 "Report-Msgid-Bugs-To: docs@metabase.com\n"
-"POT-Creation-Date: 2018-08-20 10:53-0700\n"
+"POT-Creation-Date: 2019-01-28 11:09+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -62,7 +62,7 @@ msgstr ""
 
 #: frontend/src/metabase/admin/databases/components/DatabaseSchedulingForm.jsx:122
 msgid ""
-"To do some of its magic, Discovery needs to scan your database. We will also "
+"To do some of its magic, Metabase needs to scan your database. We will also "
 "rescan it periodically to keep the metadata up-to-date. You can control when "
 "the periodic rescans happen below."
 msgstr ""
@@ -90,7 +90,7 @@ msgstr ""
 
 #: frontend/src/metabase/admin/databases/components/DatabaseSchedulingForm.jsx:153
 msgid ""
-"Discovery can scan the values present in each\n"
+"Metabase can scan the values present in each\n"
 "field in this database to enable checkbox filters in dashboards and "
 "questions. This\n"
 "can be a somewhat resource-intensive process, particularly if you have a "
@@ -99,7 +99,7 @@ msgid ""
 msgstr ""
 
 #: frontend/src/metabase/admin/databases/components/DatabaseSchedulingForm.jsx:159
-msgid "When should Discovery automatically scan and cache field values?"
+msgid "When should Metabase automatically scan and cache field values?"
 msgstr ""
 
 #: frontend/src/metabase/admin/databases/components/DatabaseSchedulingForm.jsx:164
@@ -112,7 +112,7 @@ msgstr ""
 
 #: frontend/src/metabase/admin/databases/components/DatabaseSchedulingForm.jsx:199
 msgid ""
-"When a user adds a new filter to a dashboard or a SQL question, Discovery "
+"When a user adds a new filter to a dashboard or a SQL question, Metabase "
 "will\n"
 "scan the field(s) mapped to that filter in order to show the list of "
 "selectable values."
@@ -234,7 +234,7 @@ msgstr ""
 #: frontend/src/metabase/admin/permissions/selectors.js:323
 #: frontend/src/metabase/admin/permissions/selectors.js:419
 #: frontend/src/metabase/admin/routes.jsx:39
-#: frontend/src/metabase/nav/containers/Navbar.jsx:215
+#: frontend/src/metabase/nav/containers/Navbar.jsx:217
 #: frontend/src/metabase/reference/databases/DatabaseSidebar.jsx:18
 #: frontend/src/metabase/reference/databases/TableSidebar.jsx:18
 msgid "Databases"
@@ -563,7 +563,7 @@ msgid "Create metrics to add them to the View dropdown in the query builder"
 msgstr ""
 
 #: frontend/src/metabase/admin/datamodel/components/database/SegmentsList.jsx:24
-#: frontend/src/metabase/query_builder/components/DataSelector.jsx:921
+#: frontend/src/metabase/query_builder/components/DataSelector.jsx:922
 #: frontend/src/metabase/reference/guide/BaseSidebar.jsx:33
 #: frontend/src/metabase/reference/segments/SegmentFieldSidebar.jsx:19
 #: frontend/src/metabase/reference/segments/SegmentList.jsx:56
@@ -626,7 +626,7 @@ msgid "{0} – Field Settings"
 msgstr ""
 
 #: frontend/src/metabase/admin/datamodel/containers/FieldApp.jsx:204
-msgid "Where this field will appear throughout Discovery"
+msgid "Where this field will appear throughout Metabase"
 msgstr ""
 
 #: frontend/src/metabase/admin/datamodel/containers/FieldApp.jsx:226
@@ -716,7 +716,7 @@ msgstr ""
 
 #: frontend/src/metabase/admin/datamodel/containers/FieldApp.jsx:782
 msgid ""
-"Discovery can scan the values for this field to enable checkbox filters in "
+"Metabase can scan the values for this field to enable checkbox filters in "
 "dashboards and questions."
 msgstr ""
 
@@ -884,14 +884,14 @@ msgstr ""
 #: frontend/src/metabase/admin/routes.jsx:79
 #: frontend/src/metabase/admin/settings/containers/SettingsEditorApp.jsx:266
 #: frontend/src/metabase/nav/components/ProfileLink.jsx:96
-#: frontend/src/metabase/nav/containers/Navbar.jsx:200
+#: frontend/src/metabase/nav/containers/Navbar.jsx:202
 #: frontend/src/metabase/query_builder/components/template_tags/TagEditorSidebar.jsx:99
 msgid "Settings"
 msgstr ""
 
 #: frontend/src/metabase/admin/datamodel/containers/TableSettingsApp.jsx:106
 msgid ""
-"Discovery can scan the values in this table to enable checkbox filters in "
+"Metabase can scan the values in this table to enable checkbox filters in "
 "dashboards and questions."
 msgstr ""
 
@@ -946,12 +946,12 @@ msgstr ""
 msgid ""
 "All users belong to the {0} group and can't be removed from it. Setting "
 "permissions for this group is a great way to\n"
-"make sure you know what new Discovery users will be able to see."
+"make sure you know what new Metabase users will be able to see."
 msgstr ""
 
 #: frontend/src/metabase/admin/people/components/GroupDetail.jsx:41
 msgid ""
-"This is a special group whose members can see everything in the Discovery "
+"This is a special group whose members can see everything in the Metabase "
 "instance, and who can access and make changes to the\n"
 "settings in the Admin Panel, including changing permissions! So, add people "
 "to this group with care."
@@ -959,7 +959,7 @@ msgstr ""
 
 #: frontend/src/metabase/admin/people/components/GroupDetail.jsx:45
 msgid ""
-"To make sure you don't get locked out of Discovery, there always has to be at "
+"To make sure you don't get locked out of Metabase, there always has to be at "
 "least one user in this group."
 msgstr ""
 
@@ -1098,7 +1098,7 @@ msgstr ""
 #: frontend/src/metabase/admin/people/containers/AdminPeopleApp.jsx:24
 #: frontend/src/metabase/admin/people/containers/PeopleListingApp.jsx:435
 #: frontend/src/metabase/admin/routes.jsx:70
-#: frontend/src/metabase/nav/containers/Navbar.jsx:205
+#: frontend/src/metabase/nav/containers/Navbar.jsx:207
 msgid "People"
 msgstr ""
 
@@ -1327,26 +1327,26 @@ msgid "Sorry, an error occurred."
 msgstr ""
 
 #: frontend/src/metabase/admin/permissions/routes.jsx:12
-#: frontend/src/metabase/nav/containers/Navbar.jsx:220
+#: frontend/src/metabase/nav/containers/Navbar.jsx:222
 msgid "Permissions"
 msgstr ""
 
 #: frontend/src/metabase/admin/permissions/selectors.js:59
 msgid ""
 "Administrators always have the highest level of access to everything in "
-"Discovery."
+"Metabase."
 msgstr ""
 
 #: frontend/src/metabase/admin/permissions/selectors.js:61
 msgid ""
-"Every Discovery user belongs to the All Users group. If you want to limit or "
+"Every Metabase user belongs to the All Users group. If you want to limit or "
 "restrict a group's access to something, make sure the All Users group has an "
 "equal or lower level of access."
 msgstr ""
 
 #: frontend/src/metabase/admin/permissions/selectors.js:63
 msgid ""
-"MetaBot is Discovery's Slack bot. You can choose what it has access to here."
+"MetaBot is Metabase's Slack bot. You can choose what it has access to here."
 msgstr ""
 
 #: frontend/src/metabase/admin/permissions/selectors.js:115
@@ -1504,7 +1504,7 @@ msgid "View sub-collections"
 msgstr ""
 
 #: frontend/src/metabase/admin/routes.jsx:45
-#: frontend/src/metabase/nav/containers/Navbar.jsx:210
+#: frontend/src/metabase/nav/containers/Navbar.jsx:212
 msgid "Data Model"
 msgstr ""
 
@@ -1516,8 +1516,8 @@ msgstr ""
 #: frontend/src/metabase/admin/settings/components/SettingsAuthenticationOptions.jsx:13
 #: frontend/src/metabase/admin/settings/components/SettingsSingleSignOnForm.jsx:120
 msgid ""
-"Allows users with existing Discovery accounts to login with a Google account "
-"that matches their email address in addition to their Discovery username and "
+"Allows users with existing Metabase accounts to login with a Google account "
+"that matches their email address in addition to their Metabase username and "
 "password."
 msgstr ""
 
@@ -1535,8 +1535,8 @@ msgstr ""
 
 #: frontend/src/metabase/admin/settings/components/SettingsAuthenticationOptions.jsx:25
 msgid ""
-"Allows users within your LDAP directory to log in to Discovery with their "
-"LDAP credentials, and allows automatic mapping of LDAP groups to Discovery "
+"Allows users within your LDAP directory to log in to Metabase with their "
+"LDAP credentials, and allows automatic mapping of LDAP groups to Metabase "
 "groups."
 msgstr ""
 
@@ -1609,7 +1609,7 @@ msgid "Getting set up"
 msgstr ""
 
 #: frontend/src/metabase/admin/settings/components/SettingsSetupList.jsx:106
-msgid "A few things you can do to get the most out of Discovery."
+msgid "A few things you can do to get the most out of Metabase."
 msgstr ""
 
 #: frontend/src/metabase/admin/settings/components/SettingsSetupList.jsx:115
@@ -1622,7 +1622,7 @@ msgstr ""
 
 #: frontend/src/metabase/admin/settings/components/SettingsSingleSignOnForm.jsx:123
 msgid ""
-"To allow users to sign in with Google you'll need to give Discovery a Google "
+"To allow users to sign in with Google you'll need to give Metabase a Google "
 "Developers console application client ID. It only takes a few steps and "
 "instructions on how to create a key can be found {0}"
 msgstr ""
@@ -1649,15 +1649,15 @@ msgstr ""
 msgid ""
 "Once you're there, give it a name and click {0}. Then copy and paste the Bot "
 "API Token into the field below. Once you are done, create a \"metabase_files"
-"\" channel in Slack. Discovery needs this to upload graphs."
+"\" channel in Slack. Metabase needs this to upload graphs."
 msgstr ""
 
 #: frontend/src/metabase/admin/settings/components/SettingsUpdatesForm.jsx:90
-msgid "You're running Discovery {0} which is the latest and greatest!"
+msgid "You're running Metabase {0} which is the latest and greatest!"
 msgstr ""
 
 #: frontend/src/metabase/admin/settings/components/SettingsUpdatesForm.jsx:99
-msgid "Discovery {0} is available.  You're running {1}"
+msgid "Metabase {0} is available.  You're running {1}"
 msgstr ""
 
 #: frontend/src/metabase/admin/settings/components/SettingsUpdatesForm.jsx:112
@@ -1767,10 +1767,10 @@ msgstr ""
 
 #: frontend/src/metabase/admin/settings/components/widgets/EmbeddingLegalese.jsx:19
 msgid ""
-"In plain English, when you embed charts or dashboards from Discovery in your "
+"In plain English, when you embed charts or dashboards from Metabase in your "
 "own application, that application isn't subject to the Affero General Public "
-"License that covers the rest of Discovery, provided you keep the Discovery "
-"logo and the \"Powered by Discovery\" visible on those embeds. You should, "
+"License that covers the rest of Metabase, provided you keep the Metabase "
+"logo and the \"Powered by Metabase\" visible on those embeds. You should, "
 "however, read the license text linked above as that is the actual license "
 "that you will be agreeing to by enabling this feature."
 msgstr ""
@@ -1784,12 +1784,12 @@ msgid "Premium embedding enabled"
 msgstr ""
 
 #: frontend/src/metabase/admin/settings/components/widgets/EmbeddingLevel.jsx:26
-msgid "Enter the token you bought from the Discovery Store"
+msgid "Enter the token you bought from the Metabase Store"
 msgstr ""
 
 #: frontend/src/metabase/admin/settings/components/widgets/EmbeddingLevel.jsx:53
 msgid ""
-"Premium embedding lets you disable \"Powered by Discovery\" on your embedded "
+"Premium embedding lets you disable \"Powered by Metabase\" on your embedded "
 "dashboards and questions."
 msgstr ""
 
@@ -1815,7 +1815,7 @@ msgstr ""
 
 #: frontend/src/metabase/admin/settings/components/widgets/LdapGroupMappingsWidget.jsx:149
 msgid ""
-"Mappings allow Discovery to automatically add and remove users from groups "
+"Mappings allow Metabase to automatically add and remove users from groups "
 "based on the membership information provided by the\n"
 "directory server. Membership to the Admin group can be granted through "
 "mappings, but will not be automatically removed as a\n"
@@ -2087,7 +2087,7 @@ msgid "Map tile server URL"
 msgstr ""
 
 #: frontend/src/metabase/admin/settings/selectors.js:300
-msgid "Discovery uses OpenStreetMaps by default."
+msgid "Metabase uses OpenStreetMaps by default."
 msgstr ""
 
 #: frontend/src/metabase/admin/settings/selectors.js:305
@@ -2120,7 +2120,7 @@ msgid "Embedding in other Applications"
 msgstr ""
 
 #: frontend/src/metabase/admin/settings/selectors.js:363
-msgid "Enable Embedding Discovery in other Applications"
+msgid "Enable Embedding Metabase in other Applications"
 msgstr ""
 
 #: frontend/src/metabase/admin/settings/selectors.js:373
@@ -2182,12 +2182,12 @@ msgid "Back to login"
 msgstr ""
 
 #: frontend/src/metabase/auth/components/GoogleNoAccount.jsx:15
-msgid "No Discovery account exists for this Google account."
+msgid "No Metabase account exists for this Google account."
 msgstr ""
 
 #: frontend/src/metabase/auth/components/GoogleNoAccount.jsx:17
 msgid ""
-"You'll need an administrator to create a Discovery account before you can use "
+"You'll need an administrator to create a Metabase account before you can use "
 "Google to log in."
 msgstr ""
 
@@ -2204,7 +2204,7 @@ msgid "Forgot password"
 msgstr ""
 
 #: frontend/src/metabase/auth/containers/ForgotPasswordApp.jsx:84
-msgid "The email you use for your Discovery account"
+msgid "The email you use for your Metabase account"
 msgstr ""
 
 #: frontend/src/metabase/auth/containers/ForgotPasswordApp.jsx:99
@@ -2344,7 +2344,7 @@ msgstr ""
 #: frontend/src/metabase/components/BrowseApp.jsx:93
 #: frontend/src/metabase/components/BrowseApp.jsx:152
 #: frontend/src/metabase/components/BrowseApp.jsx:243
-#: frontend/src/metabase/containers/Overworld.jsx:217
+#: frontend/src/metabase/containers/Overworld.jsx:222
 msgid "Our data"
 msgstr ""
 
@@ -2358,7 +2358,7 @@ msgid "X-ray this table"
 msgstr ""
 
 #: frontend/src/metabase/components/BrowseApp.jsx:201
-#: frontend/src/metabase/containers/Overworld.jsx:244
+#: frontend/src/metabase/containers/Overworld.jsx:249
 msgid "Learn about this table"
 msgstr ""
 
@@ -2528,12 +2528,12 @@ msgstr ""
 
 #: frontend/src/metabase/components/DatabaseDetailsForm.jsx:247
 msgid ""
-"This is a large database, so let me choose when Discovery syncs and scans"
+"This is a large database, so let me choose when Metabase syncs and scans"
 msgstr ""
 
 #: frontend/src/metabase/components/DatabaseDetailsForm.jsx:249
 msgid ""
-"By default, Discovery does a lightweight hourly sync and an intensive daily "
+"By default, Metabase does a lightweight hourly sync and an intensive daily "
 "scan of field values.\n"
 "If you have a large database, we recommend turning this on and reviewing "
 "when and how often the field value scans happen."
@@ -2563,7 +2563,7 @@ msgstr ""
 
 #: frontend/src/metabase/components/DatabaseDetailsForm.jsx:324
 msgid ""
-"To use Discovery with this data you must enable API access in the Google "
+"To use Metabase with this data you must enable API access in the Google "
 "Developers Console."
 msgstr ""
 
@@ -2717,6 +2717,17 @@ msgstr ""
 msgid "Including every option in your filter probably won’t do much…"
 msgstr ""
 
+#: frontend/src/metabase/components/GenericError.jsx:8
+#: frontend/src/metabase/containers/ErrorPages.jsx:24
+msgid "Something's gone wrong"
+msgstr ""
+
+#: frontend/src/metabase/components/GenericError.jsx:9
+#: frontend/src/metabase/containers/ErrorPages.jsx:25
+msgid ""
+"We've run into an error. You can try refreshing the page, or just go back."
+msgstr ""
+
 #: frontend/src/metabase/components/Header.jsx:97
 #: frontend/src/metabase/components/HeaderBar.jsx:45
 #: frontend/src/metabase/components/ListItem.jsx:37
@@ -2826,7 +2837,7 @@ msgid "Loading..."
 msgstr ""
 
 #: frontend/src/metabase/components/NewsletterForm.jsx:71
-msgid "Discovery Newsletter"
+msgid "Metabase Newsletter"
 msgstr ""
 
 #: frontend/src/metabase/components/NewsletterForm.jsx:81
@@ -2838,7 +2849,7 @@ msgid "Subscribe"
 msgstr ""
 
 #: frontend/src/metabase/components/NewsletterForm.jsx:106
-msgid "You're subscribed. Thanks for using Discovery!"
+msgid "You're subscribed. Thanks for using Metabase!"
 msgstr ""
 
 #: frontend/src/metabase/components/PasswordReveal.jsx:27
@@ -2846,14 +2857,14 @@ msgid "Temporary Password"
 msgstr ""
 
 #: frontend/src/metabase/components/PasswordReveal.jsx:68
-#: frontend/src/metabase/visualizations/lib/settings/graph.js:334
-#: frontend/src/metabase/visualizations/lib/settings/graph.js:349
+#: frontend/src/metabase/visualizations/lib/settings/graph.js:345
+#: frontend/src/metabase/visualizations/lib/settings/graph.js:360
 msgid "Hide"
 msgstr ""
 
 #: frontend/src/metabase/components/PasswordReveal.jsx:68
-#: frontend/src/metabase/visualizations/lib/settings/graph.js:335
-#: frontend/src/metabase/visualizations/lib/settings/graph.js:350
+#: frontend/src/metabase/visualizations/lib/settings/graph.js:346
+#: frontend/src/metabase/visualizations/lib/settings/graph.js:361
 msgid "Show"
 msgstr ""
 
@@ -2918,7 +2929,7 @@ msgid "Calendar Day"
 msgstr ""
 
 #: frontend/src/metabase/components/SchedulePicker.jsx:210
-msgid "your Discovery timezone"
+msgid "your Metabase timezone"
 msgstr ""
 
 #: frontend/src/metabase/components/SearchHeader.jsx:21
@@ -2959,7 +2970,7 @@ msgid "Unknown error encountered"
 msgstr ""
 
 #: frontend/src/metabase/components/form/StandardForm.jsx:63
-#: frontend/src/metabase/nav/containers/Navbar.jsx:300
+#: frontend/src/metabase/nav/containers/Navbar.jsx:302
 msgid "Create"
 msgstr ""
 
@@ -3008,15 +3019,6 @@ msgstr ""
 msgid "of"
 msgstr ""
 
-#: frontend/src/metabase/containers/ErrorPages.jsx:24
-msgid "Something's gone wrong"
-msgstr ""
-
-#: frontend/src/metabase/containers/ErrorPages.jsx:25
-msgid ""
-"We've run into an error. You can try refreshing the page, or just go back."
-msgstr ""
-
 #: frontend/src/metabase/containers/ErrorPages.jsx:44
 msgid "We're a little lost..."
 msgstr ""
@@ -3041,25 +3043,40 @@ msgstr ""
 msgid "Don't tell anyone, but you're my favorite."
 msgstr ""
 
-#: frontend/src/metabase/containers/Overworld.jsx:102
+#: frontend/src/metabase/containers/Overworld.jsx:105
 msgid "Try these x-rays based on your data."
 msgstr ""
 
-#: frontend/src/metabase/containers/Overworld.jsx:126
+#: frontend/src/metabase/containers/Overworld.jsx:131
+#: frontend/src/metabase/containers/Overworld.jsx:302
 #: frontend/src/metabase/reference/components/GuideHeader.jsx:12
 msgid "Start here"
 msgstr ""
 
-#: frontend/src/metabase/containers/Overworld.jsx:183
+#: frontend/src/metabase/containers/Overworld.jsx:188
 msgid "Save dashboards, questions, and collections in \"{0}\""
 msgstr ""
 
-#: frontend/src/metabase/containers/Overworld.jsx:186
+#: frontend/src/metabase/containers/Overworld.jsx:191
 msgid "Access dashboards, questions, and collections in \"{0}\""
 msgstr ""
 
-#: frontend/src/metabase/containers/Overworld.jsx:201
+#: frontend/src/metabase/containers/Overworld.jsx:206
 msgid "Browse all items"
+msgstr ""
+
+#: frontend/src/metabase/containers/Overworld.jsx:297
+#: frontend/src/metabase/entities/collections.js:140
+#: src/metabase/models/collection.clj
+msgid "Our analytics"
+msgstr ""
+
+#: frontend/src/metabase/containers/Overworld.jsx:313
+msgid "Your team's most important dashboards go here"
+msgstr ""
+
+#: frontend/src/metabase/containers/Overworld.jsx:314
+msgid "Pin dashboards in {0} to have them appear in this space for everyone"
 msgstr ""
 
 #: frontend/src/metabase/containers/SaveQuestionModal.jsx:165
@@ -3347,11 +3364,6 @@ msgstr ""
 msgid "Collection it's saved in"
 msgstr ""
 
-#: frontend/src/metabase/entities/collections.js:140
-#: src/metabase/models/collection.clj
-msgid "Our analytics"
-msgstr ""
-
 #: frontend/src/metabase/entities/collections.js:157
 msgid "All personal collections"
 msgstr ""
@@ -3419,7 +3431,7 @@ msgid "Hello World!"
 msgstr ""
 
 #: frontend/src/metabase/home/components/Activity.jsx:252
-msgid "Discovery is up and running."
+msgid "Metabase is up and running."
 msgstr ""
 
 #: frontend/src/metabase/home/components/Activity.jsx:258
@@ -3545,7 +3557,7 @@ msgid "Unarchive"
 msgstr ""
 
 #: frontend/src/metabase/home/containers/HomepageApp.jsx:74
-#: frontend/src/metabase/nav/containers/Navbar.jsx:327
+#: frontend/src/metabase/nav/containers/Navbar.jsx:329
 msgid "Activity"
 msgstr ""
 
@@ -3558,7 +3570,7 @@ msgid "No results"
 msgstr ""
 
 #: frontend/src/metabase/home/containers/SearchApp.jsx:51
-msgid "Discovery couldn't find any results for your search."
+msgid "Metabase couldn't find any results for your search."
 msgstr ""
 
 #: frontend/src/metabase/home/containers/SearchApp.jsx:142
@@ -3816,7 +3828,7 @@ msgstr ""
 
 #: frontend/src/metabase/lib/core.js:255
 msgid ""
-"Discovery will never retrieve this field. Use this for sensitive or "
+"Metabase will never retrieve this field. Use this for sensitive or "
 "irrelevant information."
 msgstr ""
 
@@ -3856,13 +3868,13 @@ msgstr ""
 
 #: frontend/src/metabase/lib/expressions/config.js:14
 #: frontend/src/metabase/qb/components/drill/SummarizeColumnDrill.js:25
-#: frontend/src/metabase/visualizations/lib/settings/graph.js:363
+#: frontend/src/metabase/visualizations/lib/settings/graph.js:374
 msgid "Min"
 msgstr ""
 
 #: frontend/src/metabase/lib/expressions/config.js:15
 #: frontend/src/metabase/qb/components/drill/SummarizeColumnDrill.js:29
-#: frontend/src/metabase/visualizations/lib/settings/graph.js:371
+#: frontend/src/metabase/visualizations/lib/settings/graph.js:382
 msgid "Max"
 msgstr ""
 
@@ -4374,59 +4386,59 @@ msgid "Help"
 msgstr ""
 
 #: frontend/src/metabase/nav/components/ProfileLink.jsx:76
-msgid "About Discovery"
+msgid "About Metabase"
 msgstr ""
 
 #: frontend/src/metabase/nav/components/ProfileLink.jsx:82
 msgid "Sign out"
 msgstr ""
 
-#: frontend/src/metabase/nav/components/ProfileLink.jsx:107
+#: frontend/src/metabase/nav/components/ProfileLink.jsx:104
 msgid "Thanks for using"
 msgstr ""
 
-#: frontend/src/metabase/nav/components/ProfileLink.jsx:111
+#: frontend/src/metabase/nav/components/ProfileLink.jsx:108
 msgid "You're on version"
 msgstr ""
 
-#: frontend/src/metabase/nav/components/ProfileLink.jsx:114
+#: frontend/src/metabase/nav/components/ProfileLink.jsx:111
 msgid "Built on"
 msgstr ""
 
-#: frontend/src/metabase/nav/components/ProfileLink.jsx:133
+#: frontend/src/metabase/nav/components/ProfileLink.jsx:130
 msgid "is a Trademark of"
 msgstr ""
 
-#: frontend/src/metabase/nav/components/ProfileLink.jsx:135
+#: frontend/src/metabase/nav/components/ProfileLink.jsx:132
 msgid "and is built with care in San Francisco, CA"
 msgstr ""
 
-#: frontend/src/metabase/nav/containers/Navbar.jsx:130
+#: frontend/src/metabase/nav/containers/Navbar.jsx:132
 #: frontend/src/metabase/routes.jsx:198
 msgid "Search"
 msgstr ""
 
-#: frontend/src/metabase/nav/containers/Navbar.jsx:195
-msgid "Discovery Admin"
+#: frontend/src/metabase/nav/containers/Navbar.jsx:197
+msgid "Metabase Admin"
 msgstr ""
 
-#: frontend/src/metabase/nav/containers/Navbar.jsx:296
+#: frontend/src/metabase/nav/containers/Navbar.jsx:298
 #: frontend/src/metabase/reference/databases/TableQuestions.jsx:36
 #: frontend/src/metabase/reference/metrics/MetricQuestions.jsx:37
 #: frontend/src/metabase/reference/segments/SegmentQuestions.jsx:37
 msgid "Ask a question"
 msgstr ""
 
-#: frontend/src/metabase/nav/containers/Navbar.jsx:305
+#: frontend/src/metabase/nav/containers/Navbar.jsx:307
 msgid "New dashboard"
 msgstr ""
 
-#: frontend/src/metabase/nav/containers/Navbar.jsx:311
+#: frontend/src/metabase/nav/containers/Navbar.jsx:313
 #: frontend/src/metabase/pulse/components/PulseEdit.jsx:127
 msgid "New pulse"
 msgstr ""
 
-#: frontend/src/metabase/nav/containers/Navbar.jsx:319
+#: frontend/src/metabase/nav/containers/Navbar.jsx:321
 msgid "Reference"
 msgstr ""
 
@@ -4611,6 +4623,7 @@ msgstr ""
 
 #: frontend/src/metabase/public/components/widgets/AdvancedSettingsPane.jsx:70
 #: frontend/src/metabase/visualizations/lib/settings/graph.js:157
+#: frontend/src/metabase/visualizations/lib/settings/graph.js:170
 msgid "Style"
 msgstr ""
 
@@ -4715,7 +4728,7 @@ msgstr ""
 
 #: frontend/src/metabase/public/components/widgets/SharingPane.jsx:118
 msgid ""
-"Share this {0} with people who don't have a Discovery account using the URL "
+"Share this {0} with people who don't have a Metabase account using the URL "
 "below:"
 msgstr ""
 
@@ -4931,7 +4944,7 @@ msgstr ""
 
 #: frontend/src/metabase/pulse/components/WhatsAPulse.jsx:30
 msgid ""
-"Pulses let you send data from Discovery to email or Slack on the schedule of "
+"Pulses let you send data from Metabase to email or Slack on the schedule of "
 "your choice."
 msgstr ""
 
@@ -4976,6 +4989,10 @@ msgstr ""
 
 #: frontend/src/metabase/qb/components/actions/CountByTimeAction.jsx:29
 msgid "Count of rows by time"
+msgstr ""
+
+#: frontend/src/metabase/qb/components/actions/GenerateDashboardAction.jsx:36
+msgid "See an exploration of this question"
 msgstr ""
 
 #: frontend/src/metabase/qb/components/actions/PivotByAction.jsx:55
@@ -5263,28 +5280,28 @@ msgstr ""
 msgid "Select a table"
 msgstr ""
 
-#: frontend/src/metabase/query_builder/components/DataSelector.jsx:784
+#: frontend/src/metabase/query_builder/components/DataSelector.jsx:785
 msgid "No tables found in this database."
 msgstr ""
 
-#: frontend/src/metabase/query_builder/components/DataSelector.jsx:821
+#: frontend/src/metabase/query_builder/components/DataSelector.jsx:822
 msgid "Is a question missing?"
 msgstr ""
 
-#: frontend/src/metabase/query_builder/components/DataSelector.jsx:825
+#: frontend/src/metabase/query_builder/components/DataSelector.jsx:826
 msgid "Learn more about nested queries"
 msgstr ""
 
-#: frontend/src/metabase/query_builder/components/DataSelector.jsx:859
+#: frontend/src/metabase/query_builder/components/DataSelector.jsx:860
 #: frontend/src/metabase/query_builder/components/expressions/ExpressionEditorTextfield.jsx:30
 msgid "Fields"
 msgstr ""
 
-#: frontend/src/metabase/query_builder/components/DataSelector.jsx:937
+#: frontend/src/metabase/query_builder/components/DataSelector.jsx:938
 msgid "No segments were found."
 msgstr ""
 
-#: frontend/src/metabase/query_builder/components/DataSelector.jsx:960
+#: frontend/src/metabase/query_builder/components/DataSelector.jsx:961
 msgid "Find a segment"
 msgstr ""
 
@@ -6159,7 +6176,7 @@ msgid "X-ray this field"
 msgstr ""
 
 #: frontend/src/metabase/reference/databases/NoDatabasesEmptyState.jsx:8
-msgid "Discovery is no fun without any data"
+msgid "Metabase is no fun without any data"
 msgstr ""
 
 #: frontend/src/metabase/reference/databases/NoDatabasesEmptyState.jsx:9
@@ -6306,7 +6323,7 @@ msgid "Contact {0}"
 msgstr ""
 
 #: frontend/src/metabase/reference/guide/GettingStartedGuideEditForm.jsx:248
-msgid "Help new Discovery users find their way around."
+msgid "Help new Metabase users find their way around."
 msgstr ""
 
 #: frontend/src/metabase/reference/guide/GettingStartedGuideEditForm.jsx:251
@@ -6524,7 +6541,7 @@ msgstr ""
 #: frontend/src/metabase/setup/components/DatabaseConnectionStep.jsx:165
 msgid ""
 "You’ll need some info about your database, like the username and password. "
-"If you don’t have that right now, Discovery also comes with a sample dataset "
+"If you don’t have that right now, Metabase also comes with a sample dataset "
 "you can get started with."
 msgstr ""
 
@@ -6550,7 +6567,7 @@ msgstr ""
 
 #: frontend/src/metabase/setup/components/PreferencesStep.jsx:76
 msgid ""
-"In order to help us improve Discovery, we'd like to collect certain data "
+"In order to help us improve Metabase, we'd like to collect certain data "
 "about usage through Google Analytics."
 msgstr ""
 
@@ -6559,11 +6576,11 @@ msgid "Here's a full list of everything we track and why."
 msgstr ""
 
 #: frontend/src/metabase/setup/components/PreferencesStep.jsx:98
-msgid "Allow Discovery to anonymously collect usage events"
+msgid "Allow Metabase to anonymously collect usage events"
 msgstr ""
 
 #: frontend/src/metabase/setup/components/PreferencesStep.jsx:105
-msgid "Discovery {0} collects anything about your data or question results."
+msgid "Metabase {0} collects anything about your data or question results."
 msgstr ""
 
 #: frontend/src/metabase/setup/components/PreferencesStep.jsx:106
@@ -6682,7 +6699,7 @@ msgstr ""
 #: frontend/src/metabase/setup/containers/PostSetupApp.jsx:72
 msgid ""
 "This seems to be taking a while. In the meantime, you can check out one of "
-"these example explorations to see what Discovery can do for you."
+"these example explorations to see what Metabase can do for you."
 msgstr ""
 
 #: frontend/src/metabase/setup/containers/PostSetupApp.jsx:85
@@ -7116,7 +7133,7 @@ msgstr ""
 msgid "This chart type doesn't support more than {0} series of data."
 msgstr ""
 
-#: frontend/src/metabase/visualizations/lib/LineAreaBarRenderer.js:509
+#: frontend/src/metabase/visualizations/lib/LineAreaBarRenderer.js:526
 #: frontend/src/metabase/visualizations/visualizations/Progress.jsx:42
 msgid "Goal"
 msgstr ""
@@ -7188,10 +7205,11 @@ msgstr ""
 #: frontend/src/metabase/visualizations/lib/settings/graph.js:156
 #: frontend/src/metabase/visualizations/lib/settings/graph.js:169
 #: frontend/src/metabase/visualizations/lib/settings/graph.js:177
-#: frontend/src/metabase/visualizations/lib/settings/graph.js:200
-#: frontend/src/metabase/visualizations/lib/settings/graph.js:206
-#: frontend/src/metabase/visualizations/lib/settings/graph.js:217
-#: frontend/src/metabase/visualizations/lib/settings/graph.js:233
+#: frontend/src/metabase/visualizations/lib/settings/graph.js:185
+#: frontend/src/metabase/visualizations/lib/settings/graph.js:210
+#: frontend/src/metabase/visualizations/lib/settings/graph.js:216
+#: frontend/src/metabase/visualizations/lib/settings/graph.js:227
+#: frontend/src/metabase/visualizations/lib/settings/graph.js:244
 #: frontend/src/metabase/visualizations/visualizations/Funnel.jsx:81
 #: frontend/src/metabase/visualizations/visualizations/PieChart.jsx:71
 #: frontend/src/metabase/visualizations/visualizations/PieChart.jsx:76
@@ -7205,7 +7223,7 @@ msgid "Display"
 msgstr ""
 
 #: frontend/src/metabase/visualizations/lib/settings/graph.js:161
-#: frontend/src/metabase/visualizations/visualizations/LineChart.jsx:17
+#: frontend/src/metabase/visualizations/visualizations/LineChart.jsx:18
 msgid "Line"
 msgstr ""
 
@@ -7218,145 +7236,149 @@ msgstr ""
 msgid "Step"
 msgstr ""
 
-#: frontend/src/metabase/visualizations/lib/settings/graph.js:170
+#: frontend/src/metabase/visualizations/lib/settings/graph.js:178
 msgid "Show point markers on lines"
 msgstr ""
 
-#: frontend/src/metabase/visualizations/lib/settings/graph.js:178
+#: frontend/src/metabase/visualizations/lib/settings/graph.js:186
 msgid "Stacking"
 msgstr ""
 
-#: frontend/src/metabase/visualizations/lib/settings/graph.js:182
+#: frontend/src/metabase/visualizations/lib/settings/graph.js:190
 msgid "Don't stack"
 msgstr ""
 
-#: frontend/src/metabase/visualizations/lib/settings/graph.js:183
+#: frontend/src/metabase/visualizations/lib/settings/graph.js:191
 msgid "Stack"
 msgstr ""
 
-#: frontend/src/metabase/visualizations/lib/settings/graph.js:184
+#: frontend/src/metabase/visualizations/lib/settings/graph.js:192
 msgid "Stack - 100%"
 msgstr ""
 
-#: frontend/src/metabase/visualizations/lib/settings/graph.js:201
+#: frontend/src/metabase/visualizations/lib/settings/graph.js:211
 msgid "Show goal"
 msgstr ""
 
-#: frontend/src/metabase/visualizations/lib/settings/graph.js:207
+#: frontend/src/metabase/visualizations/lib/settings/graph.js:217
 msgid "Goal value"
 msgstr ""
 
-#: frontend/src/metabase/visualizations/lib/settings/graph.js:218
+#: frontend/src/metabase/visualizations/lib/settings/graph.js:228
 msgid "Replace missing values with"
 msgstr ""
 
-#: frontend/src/metabase/visualizations/lib/settings/graph.js:223
+#: frontend/src/metabase/visualizations/lib/settings/graph.js:233
 msgid "Zero"
 msgstr ""
 
-#: frontend/src/metabase/visualizations/lib/settings/graph.js:224
+#: frontend/src/metabase/visualizations/lib/settings/graph.js:234
 msgid "Nothing"
 msgstr ""
 
-#: frontend/src/metabase/visualizations/lib/settings/graph.js:225
+#: frontend/src/metabase/visualizations/lib/settings/graph.js:235
 msgid "Linear Interpolated"
 msgstr ""
 
-#: frontend/src/metabase/visualizations/lib/settings/graph.js:283
-#: frontend/src/metabase/visualizations/lib/settings/graph.js:316
-#: frontend/src/metabase/visualizations/lib/settings/graph.js:329
-#: frontend/src/metabase/visualizations/lib/settings/graph.js:344
-#: frontend/src/metabase/visualizations/lib/settings/graph.js:356
-#: frontend/src/metabase/visualizations/lib/settings/graph.js:362
-#: frontend/src/metabase/visualizations/lib/settings/graph.js:370
-#: frontend/src/metabase/visualizations/lib/settings/graph.js:400
+#: frontend/src/metabase/visualizations/lib/settings/graph.js:236
+msgid "Linear Interpolated Series"
+msgstr ""
+
+#: frontend/src/metabase/visualizations/lib/settings/graph.js:294
+#: frontend/src/metabase/visualizations/lib/settings/graph.js:327
+#: frontend/src/metabase/visualizations/lib/settings/graph.js:340
+#: frontend/src/metabase/visualizations/lib/settings/graph.js:355
+#: frontend/src/metabase/visualizations/lib/settings/graph.js:367
+#: frontend/src/metabase/visualizations/lib/settings/graph.js:373
+#: frontend/src/metabase/visualizations/lib/settings/graph.js:381
+#: frontend/src/metabase/visualizations/lib/settings/graph.js:411
 msgid "Axes"
 msgstr ""
 
-#: frontend/src/metabase/visualizations/lib/settings/graph.js:284
+#: frontend/src/metabase/visualizations/lib/settings/graph.js:295
 msgid "X-axis scale"
 msgstr ""
 
-#: frontend/src/metabase/visualizations/lib/settings/graph.js:301
+#: frontend/src/metabase/visualizations/lib/settings/graph.js:312
 msgid "Timeseries"
 msgstr ""
 
-#: frontend/src/metabase/visualizations/lib/settings/graph.js:304
-#: frontend/src/metabase/visualizations/lib/settings/graph.js:322
+#: frontend/src/metabase/visualizations/lib/settings/graph.js:315
+#: frontend/src/metabase/visualizations/lib/settings/graph.js:333
 msgid "Linear"
 msgstr ""
 
-#: frontend/src/metabase/visualizations/lib/settings/graph.js:306
-#: frontend/src/metabase/visualizations/lib/settings/graph.js:323
+#: frontend/src/metabase/visualizations/lib/settings/graph.js:317
+#: frontend/src/metabase/visualizations/lib/settings/graph.js:334
 msgid "Power"
 msgstr ""
 
-#: frontend/src/metabase/visualizations/lib/settings/graph.js:307
-#: frontend/src/metabase/visualizations/lib/settings/graph.js:324
+#: frontend/src/metabase/visualizations/lib/settings/graph.js:318
+#: frontend/src/metabase/visualizations/lib/settings/graph.js:335
 msgid "Log"
 msgstr ""
 
-#: frontend/src/metabase/visualizations/lib/settings/graph.js:309
+#: frontend/src/metabase/visualizations/lib/settings/graph.js:320
 msgid "Histogram"
 msgstr ""
 
-#: frontend/src/metabase/visualizations/lib/settings/graph.js:311
+#: frontend/src/metabase/visualizations/lib/settings/graph.js:322
 msgid "Ordinal"
 msgstr ""
 
-#: frontend/src/metabase/visualizations/lib/settings/graph.js:317
+#: frontend/src/metabase/visualizations/lib/settings/graph.js:328
 msgid "Y-axis scale"
 msgstr ""
 
-#: frontend/src/metabase/visualizations/lib/settings/graph.js:330
+#: frontend/src/metabase/visualizations/lib/settings/graph.js:341
 msgid "Show x-axis line and marks"
 msgstr ""
 
-#: frontend/src/metabase/visualizations/lib/settings/graph.js:336
+#: frontend/src/metabase/visualizations/lib/settings/graph.js:347
 msgid "Compact"
 msgstr ""
 
-#: frontend/src/metabase/visualizations/lib/settings/graph.js:337
+#: frontend/src/metabase/visualizations/lib/settings/graph.js:348
 msgid "Rotate 45°"
 msgstr ""
 
-#: frontend/src/metabase/visualizations/lib/settings/graph.js:338
+#: frontend/src/metabase/visualizations/lib/settings/graph.js:349
 msgid "Rotate 90°"
 msgstr ""
 
-#: frontend/src/metabase/visualizations/lib/settings/graph.js:345
+#: frontend/src/metabase/visualizations/lib/settings/graph.js:356
 msgid "Show y-axis line and marks"
 msgstr ""
 
-#: frontend/src/metabase/visualizations/lib/settings/graph.js:357
+#: frontend/src/metabase/visualizations/lib/settings/graph.js:368
 msgid "Auto y-axis range"
 msgstr ""
 
-#: frontend/src/metabase/visualizations/lib/settings/graph.js:401
+#: frontend/src/metabase/visualizations/lib/settings/graph.js:412
 msgid "Use a split y-axis when necessary"
 msgstr ""
 
-#: frontend/src/metabase/visualizations/lib/settings/graph.js:407
-#: frontend/src/metabase/visualizations/lib/settings/graph.js:413
-#: frontend/src/metabase/visualizations/lib/settings/graph.js:422
-#: frontend/src/metabase/visualizations/lib/settings/graph.js:428
-#: frontend/src/metabase/visualizations/lib/settings/graph.js:437
+#: frontend/src/metabase/visualizations/lib/settings/graph.js:418
+#: frontend/src/metabase/visualizations/lib/settings/graph.js:424
+#: frontend/src/metabase/visualizations/lib/settings/graph.js:433
+#: frontend/src/metabase/visualizations/lib/settings/graph.js:439
+#: frontend/src/metabase/visualizations/lib/settings/graph.js:448
 msgid "Labels"
 msgstr ""
 
-#: frontend/src/metabase/visualizations/lib/settings/graph.js:408
+#: frontend/src/metabase/visualizations/lib/settings/graph.js:419
 msgid "Show label on x-axis"
 msgstr ""
 
-#: frontend/src/metabase/visualizations/lib/settings/graph.js:414
+#: frontend/src/metabase/visualizations/lib/settings/graph.js:425
 msgid "X-axis label"
 msgstr ""
 
-#: frontend/src/metabase/visualizations/lib/settings/graph.js:423
+#: frontend/src/metabase/visualizations/lib/settings/graph.js:434
 msgid "Show label on y-axis"
 msgstr ""
 
-#: frontend/src/metabase/visualizations/lib/settings/graph.js:429
+#: frontend/src/metabase/visualizations/lib/settings/graph.js:440
 msgid "Y-axis label"
 msgstr ""
 
@@ -7402,7 +7424,7 @@ msgstr ""
 msgid "Bar chart"
 msgstr ""
 
-#: frontend/src/metabase/visualizations/visualizations/LineChart.jsx:20
+#: frontend/src/metabase/visualizations/visualizations/LineChart.jsx:21
 msgid "line chart"
 msgstr ""
 
@@ -7828,7 +7850,7 @@ msgstr ""
 
 #: src/metabase/api/session.clj
 msgid ""
-"You''ll need an administrator to create a Discovery account before you can "
+"You''ll need an administrator to create a Metabase account before you can "
 "use Google to log in."
 msgstr ""
 
@@ -7899,7 +7921,7 @@ msgid ""
 msgstr ""
 
 #: src/metabase/api/setup.clj
-msgid "Discovery"
+msgid "Metabase"
 msgstr ""
 
 #: src/metabase/api/setup.clj
@@ -8267,19 +8289,19 @@ msgid "FAIL [[[{0}]]]"
 msgstr ""
 
 #: src/metabase/core.clj
-msgid "Please use the following URL to setup your Discovery installation:"
+msgid "Please use the following URL to setup your Metabase installation:"
 msgstr ""
 
 #: src/metabase/core.clj
-msgid "Discovery Shutting Down ..."
+msgid "Metabase Shutting Down ..."
 msgstr ""
 
 #: src/metabase/core.clj
-msgid "Discovery Shutdown COMPLETE"
+msgid "Metabase Shutdown COMPLETE"
 msgstr ""
 
 #: src/metabase/core.clj
-msgid "Starting Discovery version {0} ..."
+msgid "Starting Metabase version {0} ..."
 msgstr ""
 
 #: src/metabase/core.clj
@@ -8289,7 +8311,7 @@ msgstr ""
 #. startup database.  validates connection & runs any necessary migrations
 #: src/metabase/core.clj
 msgid ""
-"Setting up and migrating Discovery DB. Please sit tight, this may take a "
+"Setting up and migrating Metabase DB. Please sit tight, this may take a "
 "minute..."
 msgstr ""
 
@@ -8298,7 +8320,7 @@ msgid "Looks like this is a new installation ... preparing setup wizard"
 msgstr ""
 
 #: src/metabase/core.clj
-msgid "Discovery Initialization COMPLETE"
+msgid "Metabase Initialization COMPLETE"
 msgstr ""
 
 #: src/metabase/core.clj
@@ -8310,11 +8332,11 @@ msgid "Shutting Down Embedded Jetty Webserver"
 msgstr ""
 
 #: src/metabase/core.clj
-msgid "Starting Discovery in STANDALONE mode"
+msgid "Starting Metabase in STANDALONE mode"
 msgstr ""
 
 #: src/metabase/core.clj
-msgid "Discovery Initialization FAILED"
+msgid "Metabase Initialization FAILED"
 msgstr ""
 
 #: src/metabase/db.clj
@@ -8669,7 +8691,7 @@ msgstr ""
 #. CONFIG
 #. TODO - smtp-port should be switched to type :integer
 #: src/metabase/email.clj
-msgid "Email address you want to use as the sender of Discovery."
+msgid "Email address you want to use as the sender of Metabase."
 msgstr ""
 
 #: src/metabase/email.clj
@@ -8770,7 +8792,7 @@ msgstr ""
 
 #. Should be in the form: {"cn=Some Group,dc=...": [1, 2, 3]} where keys are LDAP groups and values are lists of MB groups IDs
 #: src/metabase/integrations/ldap.clj
-msgid "JSON containing LDAP to Discovery group mappings."
+msgid "JSON containing LDAP to Metabase group mappings."
 msgstr ""
 
 #. Define a setting which captures our Slack api token
@@ -8998,7 +9020,7 @@ msgstr ""
 
 #: src/metabase/models/humanization.clj
 msgid ""
-"Discovery can attempt to transform your table and field names into more "
+"Metabase can attempt to transform your table and field names into more "
 "sensible, human-readable versions, e.g. \"somehorriblename\" becomes \"Some "
 "Horrible Name\"."
 msgstr ""
@@ -9160,13 +9182,13 @@ msgstr ""
 
 #: src/metabase/plugins.clj
 msgid ""
-"It looks like you have some external dependencies in your Discovery plugins "
+"It looks like you have some external dependencies in your Metabase plugins "
 "directory."
 msgstr ""
 
 #: src/metabase/plugins.clj
 msgid ""
-"With Java 9 or higher, Discovery cannot automatically add them to your "
+"With Java 9 or higher, Metabase cannot automatically add them to your "
 "classpath."
 msgstr ""
 
@@ -9183,29 +9205,31 @@ msgstr ""
 
 #: src/metabase/plugins.clj
 msgid ""
-"(If you're already running Discovery this way, you can ignore this message.)"
-msgstr ""
-
-#: src/metabase/public_settings.clj
-msgid "Identify when new versions of Discovery are available."
-msgstr ""
-
-#: src/metabase/public_settings.clj
-msgid "Information about available versions of Discovery."
-msgstr ""
-
-#: src/metabase/public_settings.clj
-msgid "The name used for this instance of Discovery."
+"(If you're already running Metabase this way, you can ignore this message.)"
 msgstr ""
 
 #: src/metabase/public_settings.clj
 msgid ""
-"The base URL of this Discovery instance, e.g. \"http://metabase.my-company.com"
+"Identify when new versions of Metabase are available.n IMPORTAT: It's "
+"preferable to wait for Discovery upgrades to get new updates."
+msgstr ""
+
+#: src/metabase/public_settings.clj
+msgid "Information about available versions of Metabase."
+msgstr ""
+
+#: src/metabase/public_settings.clj
+msgid "The name used for this instance of Metabase."
+msgstr ""
+
+#: src/metabase/public_settings.clj
+msgid ""
+"The base URL of this Metabase instance, e.g. \"http://metabase.my-company.com"
 "\"."
 msgstr ""
 
 #: src/metabase/public_settings.clj
-msgid "The default language for this Discovery instance."
+msgid "The default language for this Metabase instance."
 msgstr ""
 
 #: src/metabase/public_settings.clj
@@ -9221,7 +9245,7 @@ msgstr ""
 
 #: src/metabase/public_settings.clj
 msgid ""
-"Enable the collection of anonymous usage data in order to help Discovery "
+"Enable the collection of anonymous usage data in order to help Metabase "
 "improve."
 msgstr ""
 
@@ -9263,7 +9287,7 @@ msgstr ""
 
 #: src/metabase/public_settings.clj
 msgid ""
-"Discovery will cache all saved questions with an average query execution time "
+"Metabase will cache all saved questions with an average query execution time "
 "longer than this many seconds:"
 msgstr ""
 
@@ -9484,11 +9508,19 @@ msgstr ""
 msgid "Job already exists:"
 msgstr ""
 
+#: src/metabase/task/task_history_cleanup.clj
+msgid "Task history cleanup successful, rows were {0}deleted"
+msgstr ""
+
+#: src/metabase/task/task_history_cleanup.clj
+msgid "not"
+msgstr ""
+
 #. This is the very first log message that will get printed.  It's here because this is one of the very first
 #. namespaces that gets loaded, and the first that has access to the logger It shows up a solid 10-15 seconds before
-#. the "Starting Discovery in STANDALONE mode" message because so many other namespaces need to get loaded
+#. the "Starting Metabase in STANDALONE mode" message because so many other namespaces need to get loaded
 #: src/metabase/util.clj
-msgid "Loading Discovery..."
+msgid "Loading Metabase..."
 msgstr ""
 
 #: src/metabase/util/date.clj
@@ -9514,11 +9546,11 @@ msgid "MB_ENCRYPTION_SECRET_KEY must be at least 16 characters."
 msgstr ""
 
 #: src/metabase/util/encryption.clj
-msgid "Saved credentials encryption is ENABLED for this Discovery instance."
+msgid "Saved credentials encryption is ENABLED for this Metabase instance."
 msgstr ""
 
 #: src/metabase/util/encryption.clj
-msgid "Saved credentials encryption is DISABLED for this Discovery instance."
+msgid "Saved credentials encryption is DISABLED for this Metabase instance."
 msgstr ""
 
 #: src/metabase/util/encryption.clj
@@ -9576,11 +9608,23 @@ msgid "value must be a non-blank string."
 msgstr ""
 
 #: src/metabase/util/schema.clj
+msgid "Integer greater than or equal to zero"
+msgstr ""
+
+#: src/metabase/util/schema.clj
+msgid "value must be an integer greater than or equal to zero."
+msgstr ""
+
+#: src/metabase/util/schema.clj
 msgid "Integer greater than zero"
 msgstr ""
 
 #: src/metabase/util/schema.clj
 msgid "value must be an integer greater than zero."
+msgstr ""
+
+#: src/metabase/util/schema.clj
+msgid "value must be an integer zero or greater."
 msgstr ""
 
 #: src/metabase/util/schema.clj
