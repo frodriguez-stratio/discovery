@@ -1,6 +1,8 @@
 (ns metabase.api.card
   "/api/card endpoints."
   (:require [cheshire.core :as json]
+            [clojure.java.jdbc :as jdbc]
+            [clojure.string :as str]
             [clojure.tools.logging :as log]
             [compojure.core :refer [DELETE GET POST PUT]]
             [medley.core :as m]
@@ -19,6 +21,7 @@
              [card-favorite :refer [CardFavorite]]
              [collection :as collection :refer [Collection]]
              [database :refer [Database]]
+             [field-filter :refer [FieldFilter]]
              [interface :as mi]
              [permissions :as perms]
              [pulse :as pulse :refer [Pulse]]
@@ -168,7 +171,7 @@
   "Get `Card` with ID."
   [id]
   (u/prog1 (-> (Card id)
-               (hydrate :creator :dashboard_count :can_write :collection)
+               (hydrate :creator :dashboard_count :can_write :collection :field_filters)
                api/read-check)
     (events/publish-event! :card-read (assoc <> :actor_id api/*current-user-id*))))
 
@@ -384,7 +387,7 @@
 (api/defendpoint PUT "/:id"
   "Update a `Card`."
   [id :as {{:keys [dataset_query description display name visualization_settings archived collection_id
-                   collection_position enable_embedding embedding_params result_metadata metadata_checksum]
+                   collection_position enable_embedding embedding_params result_metadata metadata_checksum field_filters]
             :as card-updates} :body}]
   {name                   (s/maybe su/NonBlankString)
    dataset_query          (s/maybe su/Map)
@@ -397,13 +400,26 @@
    collection_id          (s/maybe su/IntGreaterThanZero)
    collection_position    (s/maybe su/IntGreaterThanZero)
    result_metadata        (s/maybe qr/ResultsMetadata)
-   metadata_checksum      (s/maybe su/NonBlankString)}
+   metadata_checksum      (s/maybe su/NonBlankString)
+   field_filters          (s/maybe [qr/FieldIdFilter])}
   (let [card-before-update (api/write-check Card id)]
     ;; Do various permissions checks
     (collection/check-allowed-to-change-collection card-before-update card-updates)
     (check-allowed-to-modify-query                 card-before-update card-updates)
     (check-allowed-to-unarchive                    card-before-update card-updates)
     (check-allowed-to-change-embedding             card-before-update card-updates)
+    (loop [card_fields '() i 0]
+      (if (< i (count field_filters))
+            (let [exists (boolean (db/select-one FieldFilter :id_report_card id :id_metabase_field  (:field_id (nth field_filters i))))]
+              (if exists (db/update-where! FieldFilter {:id_report_card id
+                                                        :id_metabase_field  (:field_id (nth field_filters i))}
+                                           :filter (:sql_filter (nth field_filters i)))
+                (db/insert! FieldFilter
+                            :id_report_card       id
+                            :id_metabase_field    (:field_id (nth field_filters i))
+                            :filter               (:sql_filter (nth field_filters i))))
+              (recur (conj card_fields (:field_id (nth field_filters i))) (inc i)))
+              (jdbc/execute! (db/connection) [(format "DELETE FROM CARD_FIELD_SQL_FILTER WHERE ID_REPORT_CARD = %s AND ID_METABASE_FIELD NOT IN %s" id (str/replace (str card_fields) #" " ","))])))
     ;; make sure we have the correct `result_metadata`
     (let [card-updates (assoc card-updates
                          :result_metadata (result-metadata-for-updating card-before-update dataset_query
