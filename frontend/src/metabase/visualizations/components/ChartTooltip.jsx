@@ -64,7 +64,18 @@ export default class ChartTooltip extends Component {
       hovered &&
       ((hovered.element && document.contains(hovered.element)) ||
         hovered.event);
-    const isOpen = rows.length > 0 && !!hasEventOrElement;
+        
+    let isOpen;
+
+    // We need to know if the chart are interpolate series to hide tooltips with zero value
+    const interpolateSeries = this.props.series[0].card.visualization_settings["line.missing"] === "interpolate_series";
+    if (interpolateSeries) {
+      isOpen = rows.length > 0 && !!hasEventOrElement && rows[2].value != null;
+    } else {
+      // Not interpolate series
+      isOpen = rows.length > 0 && !!hasEventOrElement; 
+    }
+
     return (
       <TooltipPopover
         target={hovered && hovered.element}
