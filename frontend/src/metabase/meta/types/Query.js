@@ -60,6 +60,7 @@ export type TemplateTag = {
   widget_type?: ParameterType,
   required?: boolean,
   default?: string,
+  sql_filter?: string
 };
 
 export type TemplateTags = { [key: TemplateTagName]: TemplateTag };

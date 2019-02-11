@@ -154,7 +154,9 @@ export default class Question {
    */
   @memoize
   query(): Query {
-    const datasetQuery = this._card.dataset_query;
+    let datasetQuery;
+    this._card.fiel_filters ? datasetQuery = {...this._card.dataset_query, ...[this._card.field_filters]}
+                           : datasetQuery = this._card.dataset_query;
 
     for (const QueryClass of [StructuredQuery, NativeQuery]) {
       if (QueryClass.isDatasetQueryType(datasetQuery)) {
@@ -368,7 +370,7 @@ export default class Question {
   setCollectionId(collectionId: number) {
     return this.setCard(assoc(this.card(), "collection_id", collectionId));
   }
-
+  
   id(): number {
     return this._card && this._card.id;
   }

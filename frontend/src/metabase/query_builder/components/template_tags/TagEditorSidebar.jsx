@@ -75,8 +75,23 @@ export default class TagEditorSidebar extends Component {
       section = "help";
     } else {
       section = this.state.section;
-    }
 
+      // Empty Array
+      query.datasetQuery().field_filters = [];
+
+      // Tags mapped to fCard
+      let fCard = tags.map(tag => (
+        {
+          field_id: tag.dimension ? tag.dimension[1] : '',
+          sql_filter: tag.sql_filter ? tag.sql_filter : ''
+        }
+      ));
+      
+      // Assign mapped SQL tag
+      query.datasetQuery().field_filters = fCard;
+      
+    }
+    
     return (
       <div className="DataReference-container p3 full-height scroll-y">
         <div className="DataReference-header flex align-center mb2">

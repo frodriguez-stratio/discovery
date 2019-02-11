@@ -111,6 +111,12 @@ export default class QueryHeader extends Component {
 
   onSave = async (card, showSavedModal = true) => {
     const { question, apiUpdateQuestion } = this.props;
+    
+    // Delete sql_filter if is '' while BackEnd don't have the sql_filter tag into template_tags[]
+    const tags = Object.values(question._card.dataset_query.native.template_tags);
+    let sqlTag = tags.find(e => e.sql_filter !== ('' || 'undefined' || null));
+    if (tags.length !== 0 && sqlTag) { tags.forEach(tag => delete tag.sql_filter) }
+
     const questionWithUpdatedCard = question.setCard(card);
     await apiUpdateQuestion(questionWithUpdatedCard);
 

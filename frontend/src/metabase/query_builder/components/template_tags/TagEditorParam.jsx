@@ -68,6 +68,7 @@ export default class TagEditorParam extends Component {
       this.props.onUpdate({
         ...this.props.tag,
         type: type,
+        sql_filter: '',
         dimension: undefined,
         widget_type: undefined,
       });
@@ -112,10 +113,10 @@ export default class TagEditorParam extends Component {
         fieldMetadataLoaded = true;
       }
     }
-
     const isDimension = tag.type === "dimension";
     const hasSelectedDimensionField =
       isDimension && Array.isArray(tag.dimension);
+    
     return (
       <div className="pb2 mb2 border-bottom border-dark">
         <h3 className="pb2">{tag.name}</h3>
@@ -222,6 +223,17 @@ export default class TagEditorParam extends Component {
             />
           </div>
         )}
+        {((tag.type === "dimension" || tag.sql_filter)) && (
+          <div>
+            <h3 className="pb2 pt1">{t`Filtro`} SQL</h3>
+            <input
+              className="AdminSelect p1 text-bold text-medium bordered border-med rounded full"
+              value={tag.sql_filter}
+              onChange={ e => this.setParameterAttribute("sql_filter", e.target.value)}
+                placeholder={t`SQL query…`}
+            />
+          </div>
+        )} 
       </div>
     );
   }
